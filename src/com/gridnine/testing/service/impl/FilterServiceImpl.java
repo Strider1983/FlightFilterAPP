@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FilterServiceImpl implements FilterService {
     @Override
-    public List<Flight> totalFlightTime(List<Flight> flights) {
+    public List<Flight> totalFlightTime(long totalFlightHours) {
         return null;
     }
 }

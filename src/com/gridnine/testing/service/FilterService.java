@@ -5,6 +5,6 @@ import com.gridnine.testing.model.Flight;
 import java.util.List;
 
 public interface FilterService {
-    List<Flight> totalFlightTime(List<Flight> flights);
+    List<Flight> totalFlightTime(long totalFlightHours);
 
 }
