@@ -9,8 +9,8 @@ public interface FlightService {
     long totalSegments (Flight flight);
     long totalEarthTime (Flight flight);
     long totalSkyTime (Flight flight);
-    long maxSegmentMinutes (Flight flight);
-    long minSegmentMinutes (Flight flight);
+    Long maxSegmentMinutes (Flight flight);
+    Long minSegmentMinutes (Flight flight);
     LocalDateTime departureTime (Flight flight);
     LocalDateTime arrivalTime (Flight flight);
 

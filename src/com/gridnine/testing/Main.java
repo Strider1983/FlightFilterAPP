@@ -3,6 +3,8 @@ package com.gridnine.testing;
 import com.gridnine.testing.model.Flight;
 import com.gridnine.testing.model.Segment;
 import com.gridnine.testing.service.FlightBuilder;
+import com.gridnine.testing.service.impl.FilterServiceImpl;
+import com.gridnine.testing.service.impl.FlightServiceImpl;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -14,27 +16,23 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello Flight Filter!");
+        FlightServiceImpl flightService = new FlightServiceImpl();
 
         FlightBuilder flightBuilder = new FlightBuilder();
         List<Flight> flights = flightBuilder.createFlights();
 
-        Flight flight = flights.get(1);
-        List<Segment> segments = flight.getSegments();
-        Segment segment1 = segments.get(0);
-        Segment segmentLast = segments.get(segments.size() - 1);
-        LocalDateTime start = segment1.getDepartureDate();
-        LocalDateTime finish = segmentLast.getArrivalDate();
-        Duration duration = Duration.between(start, finish);
-        System.out.println(duration.toDays());
-        System.out.println(duration.toHours()%24);
-        System.out.println(duration.toMinutes()%60);
+        Long mins = flightService.totalEarthTime(flights.get(5));
+        System.out.println("totalEarthTime - " + mins);
+        Long minutes = flightService.totalSkyTime(flights.get(5));
+        System.out.println("totalSkyTime - " + minutes);
+        long total = flightService.totalFlightMinutes(flights.get(5));
+        System.out.println("totalFlightMinutes - " + total);
 
-        LocalDateTime dep = flights.get(1).getSegments().get(0).getDepartureDate();
-        LocalDateTime arr = flights.get(1).getSegments().get(flights.get(1).getSegments().size() - 1).getArrivalDate();
-        Duration duration2 = Duration.between(dep, arr);
+        long seg = Duration.between(flights.get(5).getSegments().get(2).getDepartureDate(), flights.get(5).getSegments().get(2).getArrivalDate()).toMinutes();
 
-        System.out.println(duration2.toDays());
-        System.out.println(duration2.toHours()%24);
-        System.out.println(duration2.toMinutes()%60);
+        System.out.println(flights.get(5));
+
+
+
     }
 }
